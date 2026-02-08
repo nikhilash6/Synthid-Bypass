@@ -4,7 +4,9 @@
 
 **Try it 100% free on Discord: [https://discord.gg/M7Gpr4tTP9](https://discord.gg/M7Gpr4tTP9)**
 
-Learn More: [synthidbypass.com](synthidbypass.com)
+**Learn More: [synthidbypass.com](synthidbypass.com)**
+
+
 ---
 
 ## 1. Overview
