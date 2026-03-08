@@ -1,0 +1,2 @@
+# No extra pip dependencies for this node pack at the moment.
+# Install the required external custom node repos listed in the main README.
