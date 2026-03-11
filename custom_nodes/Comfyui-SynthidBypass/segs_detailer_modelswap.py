@@ -1,17 +1,23 @@
 import logging
 import os
 import sys
+from pathlib import Path
 
 import comfy
 from nodes import MAX_RESOLUTION
 
 
 # Ensure Impact Pack modules are importable even if this node loads first.
-_THIS_DIR = os.path.dirname(__file__)
-_CUSTOM_NODES_DIR = os.path.abspath(os.path.join(_THIS_DIR, ".."))
-_IMPACT_MODULES_DIR = os.path.join(_CUSTOM_NODES_DIR, "ComfyUI-Impact-Pack", "modules")
-if os.path.isdir(_IMPACT_MODULES_DIR) and _IMPACT_MODULES_DIR not in sys.path:
-    sys.path.append(_IMPACT_MODULES_DIR)
+_THIS_DIR = Path(__file__).resolve().parent
+_IMPACT_MODULES_DIR = None
+
+for _parent in (_THIS_DIR.parent, *_THIS_DIR.parents):
+    _candidate = _parent / "ComfyUI-Impact-Pack" / "modules"
+    if _candidate.is_dir():
+        _IMPACT_MODULES_DIR = _candidate
+        if str(_candidate) not in sys.path:
+            sys.path.append(str(_candidate))
+        break
 
 
 try:

@@ -57,7 +57,9 @@ Outputs:
 
 ## Installation
 
-1. Copy this folder into `ComfyUI/custom_nodes/Comfyui-SynthidBypass`.
+1. Install with one of these layouts:
+   - Copy this folder into `ComfyUI/custom_nodes/Comfyui-SynthidBypass`.
+   - Or clone the full Synthid-Bypass repo directly into `ComfyUI/custom_nodes/`; the repo root contains a compatibility loader that exposes the same nodes.
 2. Make sure the dependencies below are installed.
 3. Restart ComfyUI.
 
@@ -69,6 +71,13 @@ This package currently has no extra Python dependencies of its own beyond what C
 - [RES4LYF](https://github.com/ClownsharkBatwing/RES4LYF) if you want the exact sampler/scheduler combination used in the v2 release workflow
 
 The v2 workflow also relies on external node packs listed in the main repository README.
+
+## Troubleshooting
+
+- Search for `Synthid-Bypass-AdaptiveDenoise` after restarting ComfyUI. If it is missing, the package did not load.
+- `Install Missing Custom Nodes` in ComfyUI Manager does not currently install this bundled node pack from the workflow repo. Use one of the manual install layouts above.
+- Avoid nested folders like `.../Comfyui-SynthidBypass/Comfyui-SynthidBypass/...`.
+- If `SEGSDetailerModelSwap` errors on load, verify that `ComfyUI-Impact-Pack` is installed and enabled.
 
 ## Typical usage
 

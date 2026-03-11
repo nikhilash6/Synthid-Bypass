@@ -126,7 +126,9 @@ To run v2, you need a working ComfyUI install plus the required models and custo
 
 1. Install a recent version of [ComfyUI](https://github.com/comfyanonymous/ComfyUI).
 2. Install the required external custom node repos listed below.
-3. Copy the bundled [`custom_nodes/Comfyui-SynthidBypass/`](custom_nodes/Comfyui-SynthidBypass/) folder into your `ComfyUI/custom_nodes/` directory. It is intentionally packaged in the same folder shape ComfyUI users expect from a standalone custom node repo: `README.md`, `__init__.py`, Python module(s), and `requirements.txt`.
+3. Install the bundled Synthid custom nodes with one of these two layouts:
+   - **Manual copy:** copy [`custom_nodes/Comfyui-SynthidBypass/`](custom_nodes/Comfyui-SynthidBypass/) into `ComfyUI/custom_nodes/Comfyui-SynthidBypass/`.
+   - **Direct repo clone:** clone this whole repo directly into `ComfyUI/custom_nodes/`. The repo root now includes a compatibility loader so ComfyUI can register the bundled Synthid nodes even if you do not extract the nested folder separately.
 4. Download the required models into the exact ComfyUI model directories listed in the resources section.
 5. Drag [`Synthid-Bypass-v2.0.json`](Synthid-Bypass-v2.0.json) onto your ComfyUI canvas.
 6. Set the `Load Image` node to your source image and run the graph.
@@ -136,6 +138,14 @@ To run v2, you need a working ComfyUI install plus the required models and custo
 - V2 is **GGUF-first**. The workflow expects GGUF loaders for both model and CLIP paths.
 - The current v2 face detail path uses the `res_2s` sampler and `bong_tangent` scheduler, which come from the `RES4LYF` custom node pack.
 - Higher-resolution images may require a stronger adaptive level and/or a slightly higher denoise ceiling.
+- ComfyUI Manager's `Install Missing Custom Nodes` flow does **not** currently install the bundled Synthid node pack from this repo. Use one of the two install layouts above for `Synthid-Bypass-Facedetailer` and `Synthid-Bypass-AdaptiveDenoise`.
+
+### Troubleshooting
+
+- After restarting ComfyUI, search for `Synthid-Bypass-AdaptiveDenoise`. If it is missing, the package did not load.
+- Supported folder shapes are either `ComfyUI/custom_nodes/<repo-clone>/__init__.py` or `ComfyUI/custom_nodes/Comfyui-SynthidBypass/__init__.py`.
+- Do not nest the folder twice. Broken layouts usually look like `ComfyUI/custom_nodes/<repo-clone>/<repo-clone>/...` or `ComfyUI/custom_nodes/Comfyui-SynthidBypass/Comfyui-SynthidBypass/...`.
+- `SEGSDetailerModelSwap` depends on [ComfyUI Impact Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack). If that pack failed to load, the Synthid face detailer will also fail.
 
 ## 8. Resources
 
